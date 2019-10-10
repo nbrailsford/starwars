@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  color: whitesmoke;
+  /* background-image: url("starwars.jpg"); */
+  background-color: #cccccc;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#startScreen {
+  display: flex;
+  justify-content: center;
+}
+
+#start {
+  align-self: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(181, 22, 22);
+  width: 80%;
+  border-radius: 5%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 7%;
+  font-size: 40px;
+}
+p {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+fieldset {
+  margin: 5px;
+  width: 45%;
+  height: 80px;
+  padding: 10px;
+}
+.submit {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.button {
+  height: 30px;
+  margin: 20px;
+}
+button {
+  width: 100px;
+  margin: auto;
+}
+footer {
+  position: absolute;
+  bottom: 0px;
+}

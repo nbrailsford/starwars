@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="startScreen">
+      <div class="container">
+        <h1>Are you a Heroic Jedi or a Dark Lord</h1>
+        <h1>Time to find out if the force is with you</h1>
+        <button id="start">START</button>
+      </div>
+    </section>
+
+    <section id="mainScreen">
+      <h1>Is The Force With You?</h1>
+      <form id="js-form">
+        <fieldset>
+          How tall are You?
+          <label for="height"></label>
+          <input id="feetTall" type="text" placeholder="5.7" />
+        </fieldset>
+        <fieldset>
+          Choose your gender:
+          <label for="search-term">Male</label>
+          <input type="radio" name="search-term" id="male" />
+          <label for="search-term">Female</label>
+          <input type="radio" name="search-term" id="female" />
+          <label for="search-term">Other</label>
+          <input type="radio" name="search-term" id="other" />
+        </fieldset>
+        <input class="button" type="submit" />
+      </form>
+
+      <main></main>
+    </section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
