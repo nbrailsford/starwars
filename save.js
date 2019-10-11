@@ -35,16 +35,8 @@ function genderCheck() {
 }
 
 // get api
-function getPeople() {
+function getResults() {
   fetch("https://swapi.co/api/people/")
-    .then(response => response.json())
-    .then(responseJson => renderResults(responseJson));
-}
-function check() {
-  console.log(responseJson.results);
-}
-function getPlantes() {
-  fetch("https://swapi.co/api/planets/")
     .then(response => response.json())
     .then(responseJson => renderResults(responseJson));
 }
@@ -56,13 +48,14 @@ function renderResults(responseJson) {
   for (let i = 0; i < responseJson.results.length; i++)
     if (closest === responseJson.results[i].height) {
       $("main").append(
-        `<div class="container">
-        <h1> ${responseJson.results[i].name}:</h1>
-        <p>height: ${responseJson.results[i].height} </p>
-        <p>weight: ${responseJson.results[i].mass} </p>
-        <p>${responseJson.results[i].skin_color} skin</p>
+        `<h1> ${responseJson.results[i].name}:</h1>
+        <div class="container">
         <p>${responseJson.results[i].eye_color} eyes</p>
-        <p>${responseJson.results[i].hair_color} hair</p>`
+        <p>${responseJson.results[i].hair_color} hair</p>
+        <p>from ${responseJson.results[i].homeworld}</p>
+        <p>${responseJson.results[i].species}</p>
+        <p>${responseJson.results[i].url}</p>
+        </div>`
       );
     } else {
       if (parseInt(closest) < 96) {
@@ -78,7 +71,7 @@ function watchForm() {
     feet = $("#feetTall").val();
     genderCheck();
     event.preventDefault();
-    getPeople();
+    getResults();
   });
 }
 
@@ -96,3 +89,5 @@ $(function() {
   console.log("App loaded! Waiting for submit!");
   start();
 });
+
+// ******************

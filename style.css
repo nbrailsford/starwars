@@ -75,3 +75,7 @@ footer {
   position: absolute;
   bottom: 0px;
 }
+.fas {
+  text-align: center;
+  width: 100px;
+}
