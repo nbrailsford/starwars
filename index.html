@@ -19,11 +19,36 @@
 
     <section id="mainScreen">
       <h1>Is The Force With You?</h1>
+      <h2>Select your height and gender</h2>
+      <h2>
+        to find out which StarWars character you match with
+      </h2>
+      <form></form>
       <form id="js-form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
         <fieldset>
           How tall are You?
-          <label for="height"></label>
-          <input id="feetTall" type="text" placeholder="5.7" />
+          <label for="feet">feet</label>
+          <select id="feetTall" for="feet">
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <label for="inches">inches</label>
+          <select id="inchesTall" for="inches" size="1">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+          </select>
         </fieldset>
         <fieldset>
           Choose your gender:
