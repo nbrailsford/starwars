@@ -10,9 +10,11 @@ function emptyCounts() {
 // if gender matches then push closest height to an array
 
 function getClosestHeight(responseJson) {
-  console.log(height);
+  genderCheck();
+  console.log(responseJson.results);
+  console.log(gender);
   emptyCounts();
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 9; i++) {
     if (responseJson.results[i].gender === gender) {
       counts.push(responseJson.results[i].height);
       closest = counts.reduce(function(prev, curr) {
@@ -21,6 +23,7 @@ function getClosestHeight(responseJson) {
     }
   }
   console.log(counts);
+  console.log(closest);
 }
 
 // assign gender
@@ -36,23 +39,23 @@ function genderCheck() {
 
 // get api
 function getPeople() {
-  if (name > 100) {
-    fetch("https://swapi.co/api/people/")
+  if (nameVal > 100) {
+    fetch("https://swapi.co/api/people/?page=1")
       .then(response => response.json())
       .then(responseJson => renderResults(responseJson));
-  } else if (name > 105) {
+  } else if (nameVal >= 105) {
     fetch("https://swapi.co/api/people/?page=2")
       .then(response => response.json())
       .then(responseJson => renderResults(responseJson));
-  } else if (name > 110) {
+  } else if (nameVal >= 110) {
     fetch("https://swapi.co/api/people/?page=3")
       .then(response => response.json())
       .then(responseJson => renderResults(responseJson));
-  } else if (name > 115) {
+  } else if (nameVal >= 115) {
     fetch("https://swapi.co/api/people/?page=4")
       .then(response => response.json())
       .then(responseJson => renderResults(responseJson));
-  } else if (name > 120) {
+  } else if (nameVal >= 120) {
     fetch("https://swapi.co/api/people/?page=5")
       .then(response => response.json())
       .then(responseJson => renderResults(responseJson));
@@ -72,7 +75,6 @@ function renderResults(responseJson) {
   getClosestHeight(responseJson);
   for (let i = 0; i < responseJson.results.length; i++)
     if (closest === responseJson.results[i].height) {
-      console.log(responseJson.results[i].name);
       $("main").append(
         `<div class="container">
         <h1> ${responseJson.results[i].name}:</h1>
@@ -85,7 +87,8 @@ function renderResults(responseJson) {
       );
     } else {
       if (parseInt(closest) < 96) {
-        $("main").append(`<h1>You're a little person</h1>`);
+        $("main").append(`<h1>No Matches! </h1>`);
+        break;
       }
     }
 }
@@ -95,17 +98,16 @@ let feet = 0.0;
 let inches = 0.0;
 let height = 0;
 let name = "";
+let nameVal = 0;
 function watchForm() {
   $("form").submit(event => {
     feet = $("#feetTall").val();
     inches = $("#inchesTall").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
-    name = $("#name")
+    name = $("#names")
       .val()
-      .charCodeAt(0);
-    console.log(name);
-    console.log(height);
-    genderCheck();
+      .toLowerCase();
+    nameVal = name.charCodeAt(0);
     event.preventDefault();
     getPeople();
   });

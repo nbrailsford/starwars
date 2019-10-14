@@ -36,10 +36,14 @@ main {
   margin: auto;
 }
 
+#name {
+  align-self: center;
+}
+
 h1,
 h2 {
   text-align: center;
-  margin: 7%;
+  margin: 5%;
   font-size: 40px;
 }
 

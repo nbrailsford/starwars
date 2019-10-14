@@ -12,6 +12,7 @@
     <section id="startScreen">
       <div class="container">
         <h1>Are you a Heroic Jedi or a Dark Lord</h1>
+        <h2>find out which Star Wars character you match with</h2>
         <h1>Time to find out if the force is with you</h1>
         <button id="start">START</button>
       </div>
@@ -19,18 +20,20 @@
 
     <section id="mainScreen">
       <h1>Is The Force With You?</h1>
-      <h2>Select your height and gender</h2>
+      <h2>input your name, height and gender</h2>
       <h2>
-        to find out which StarWars character you match with
+        to find your match
       </h2>
       <form></form>
       <form id="js-form">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" />
+        <label id="name" for="name">Name</label>
+        <input type="text" name="name" id="names" />
         <fieldset>
           How tall are You?
           <label for="feet">feet</label>
           <select id="feetTall" for="feet">
+            <option value="5">1</option>
+            <option value="5">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
