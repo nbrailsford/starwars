@@ -10,7 +10,6 @@ function emptyCounts() {
 // if gender matches then push closest height to an array
 
 function getClosestHeight(responseJson) {
-  genderCheck();
   console.log(responseJson.results);
   console.log(gender);
   emptyCounts();
@@ -71,7 +70,6 @@ function check() {
 
 //render results to the screen
 function renderResults(responseJson) {
-  $("main").empty();
   getClosestHeight(responseJson);
   for (let i = 0; i < responseJson.results.length; i++)
     if (closest === responseJson.results[i].height) {
@@ -101,6 +99,8 @@ let name = "";
 let nameVal = 0;
 function watchForm() {
   $("form").submit(event => {
+    $("main").empty();
+    genderCheck();
     feet = $("#feetTall").val();
     inches = $("#inchesTall").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
