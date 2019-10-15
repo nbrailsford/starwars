@@ -75,13 +75,19 @@ function renderResults(responseJson) {
     if (closest === responseJson.results[i].height) {
       $("main").append(
         `<div class="container">
-        <h1> ${responseJson.results[i].name}:</h1>
-        <p>height: ${responseJson.results[i].height} </p>
-        <p>weight: ${responseJson.results[i].mass} </p>
-        <p>${responseJson.results[i].skin_color} skin</p>
-        <p>${responseJson.results[i].eye_color} eyes</p>
-        <p>${responseJson.results[i].hair_color} hair</p>
-        <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>`
+        <section class="star-wars">
+          <div class="crawl">
+            <h1 class="title"> ${responseJson.results[i].name}:</h1>
+              <p>height: ${responseJson.results[i].height} </p>
+              <p>weight: ${responseJson.results[i].mass} </p>
+              <p>${responseJson.results[i].skin_color} skin</p>
+              <p>${responseJson.results[i].eye_color} eyes</p>
+              <p>${responseJson.results[i].hair_color} hair</p>
+              <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
+              </div>
+            </div>
+          </section>      
+        </div>`
       );
     } else {
       if (parseInt(closest) < 96) {
@@ -101,6 +107,7 @@ function watchForm() {
   $("form").submit(event => {
     $("main").empty();
     genderCheck();
+    changeBackground();
     feet = $("#feetTall").val();
     inches = $("#inchesTall").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
@@ -127,3 +134,16 @@ $(function() {
   console.log("App loaded! Waiting for submit!");
   start();
 });
+
+function changeBackground() {
+  if (gender === "male") {
+    $("body").css("background-image", "url(images/starwars.jpg)");
+    $("body").css("color", "whitesmoke");
+  } else if (gender === "female") {
+    $("body").css("background-image", "url(images/starwars2.jpg)");
+    $("body").css("color", "black");
+  } else {
+    $("body").css("background-image", "url(images/stars.jpg)");
+    $("body").css("color", "whitesmoke");
+  }
+}

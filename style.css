@@ -4,40 +4,88 @@
 }
 body {
   color: whitesmoke;
-  /* background-image: url("starwars.jpg"); */
-  background-color: #cccccc;
-  height: 100vh;
+  background-image: url("images/stars.jpg");
+  background-color: black;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-size: cover;
 }
 
-#startScreen {
+#startScreen,
+form,
+.submit {
   display: flex;
   justify-content: center;
 }
 
-#start {
+#start,
+#name {
   align-self: center;
+}
+#mainScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 main {
+  width: 80%;
+  background-image: url("images/stars.jpg");
+  background-size: cover;
+  background: black;
+  margin: auto;
+}
+.star-wars {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  height: 800px;
+  perspective: 400px;
+  color: #feda4a;
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
 }
 
+.crawl {
+  position: relative;
+  top: -100px;
+  transform-origin: 50% 100%;
+  animation: crawl 60s linear;
+}
+@keyframes crawl {
+  0% {
+    top: 0;
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
 .container {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(181, 22, 22);
-  width: 80%;
-  border-radius: 5%;
-  margin: auto;
+  border: 20px solid rgb(181, 22, 22);
+  width: 104%;
+  height: 40%;
+  border-radius: 25px;
+  margin: 100px auto;
+  padding: 20px;
+  overflow: hidden;
 }
 
-#name {
-  align-self: center;
+.star-wars {
+  height: 800px;
+  perspective: 400px;
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
 }
 
 h1,
@@ -55,10 +103,6 @@ p {
 a {
   text-align: center;
 }
-form {
-  display: flex;
-  justify-content: center;
-}
 
 fieldset {
   margin: 5px;
@@ -67,9 +111,7 @@ fieldset {
   padding: 10px;
 }
 .submit {
-  display: flex;
   width: 100%;
-  justify-content: center;
 }
 .button {
   height: 30px;
@@ -78,12 +120,4 @@ fieldset {
 button {
   width: 100px;
   margin: auto;
-}
-footer {
-  position: absolute;
-  bottom: 0px;
-}
-.fas {
-  text-align: center;
-  width: 100px;
 }
