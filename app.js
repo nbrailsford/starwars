@@ -107,7 +107,7 @@ function watchForm() {
   $("form").submit(event => {
     $("main").empty();
     genderCheck();
-    changeBackground();
+    // changeBackground();
     feet = $("#feetTall").val();
     inches = $("#inchesTall").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
@@ -135,15 +135,15 @@ $(function() {
   start();
 });
 
-function changeBackground() {
-  if (gender === "male") {
-    $("body").css("background-image", "url(images/starwars.jpg)");
-    $("body").css("color", "whitesmoke");
-  } else if (gender === "female") {
-    $("body").css("background-image", "url(images/starwars2.jpg)");
-    $("body").css("color", "black");
-  } else {
-    $("body").css("background-image", "url(images/stars.jpg)");
-    $("body").css("color", "whitesmoke");
-  }
-}
+// function changeBackground() {
+//   if (gender === "male") {
+//     $("body").css("background-image", "url(images/starwars.jpg)");
+//     $("body").css("color", "whitesmoke");
+//   } else if (gender === "female") {
+//     $("body").css("background-image", "url(images/starwars2.jpg)");
+//     $("body").css("color", "black");
+//   } else {
+//     $("body").css("background-image", "url(images/stars.jpg)");
+//     $("body").css("color", "whitesmoke");
+//   }
+// }

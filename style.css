@@ -4,8 +4,8 @@
 }
 body {
   color: whitesmoke;
-  background-image: url("images/stars.jpg");
-  background-color: black;
+  /* background-image: url("images/stars.jpg"); */
+  background-color: gray;
   background-position: center;
   background-repeat: repeat-x;
   background-size: cover;
@@ -30,12 +30,12 @@ form,
 
 main {
   width: 80%;
-  background-image: url("images/stars.jpg");
+  /* background-image: url("images/stars.jpg"); */
   background-size: cover;
-  background: black;
+  background: gray;
   margin: auto;
 }
-.star-wars {
+/* .star-wars {
   display: flex;
   justify-content: center;
   height: 800px;
@@ -47,9 +47,9 @@ main {
   letter-spacing: 6px;
   line-height: 150%;
   text-align: justify;
-}
+} */
 
-.crawl {
+/* .crawl {
   position: relative;
   top: -100px;
   transform-origin: 50% 100%;
@@ -64,7 +64,7 @@ main {
     top: -6000px;
     transform: rotateX(25deg) translateZ(-2500px);
   }
-}
+} */
 .container {
   display: flex;
   flex-direction: column;
@@ -74,10 +74,10 @@ main {
   border-radius: 25px;
   margin: 100px auto;
   padding: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
-.star-wars {
+/* .star-wars {
   height: 800px;
   perspective: 400px;
   font-family: "Pathway Gothic One", sans-serif;
@@ -86,7 +86,7 @@ main {
   letter-spacing: 6px;
   line-height: 150%;
   text-align: justify;
-}
+} */
 
 h1,
 h2 {
