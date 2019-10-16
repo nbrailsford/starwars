@@ -78,20 +78,22 @@ function renderResults(responseJson) {
         <section class="star-wars">
           <div class="crawl">
             <h1 class="title"> ${responseJson.results[i].name}:</h1>
-              <p>height: ${responseJson.results[i].height} </p>
-              <p>weight: ${responseJson.results[i].mass} </p>
+              <p>height: ${responseJson.results[i].height} cm </p>
+              <p>weight: ${responseJson.results[i].mass} kilos</p>
               <p>${responseJson.results[i].skin_color} skin</p>
               <p>${responseJson.results[i].eye_color} eyes</p>
               <p>${responseJson.results[i].hair_color} hair</p>
-              <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
               </div>
             </div>
+            <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
+            <button id="re-start"onClick="document.location.reload(true)">refresh</button>
           </section>      
         </div>`
       );
+      break;
     } else {
       if (parseInt(closest) < 96) {
-        $("main").append(`<h1>No Matches! </h1>`);
+        $("main").append(`<h1>No Matches! try another name</h1>`);
         break;
       }
     }
@@ -107,7 +109,7 @@ function watchForm() {
   $("form").submit(event => {
     $("main").empty();
     genderCheck();
-    // changeBackground();
+    changeBackground();
     feet = $("#feetTall").val();
     inches = $("#inchesTall").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
@@ -135,15 +137,15 @@ $(function() {
   start();
 });
 
-// function changeBackground() {
-//   if (gender === "male") {
-//     $("body").css("background-image", "url(images/starwars.jpg)");
-//     $("body").css("color", "whitesmoke");
-//   } else if (gender === "female") {
-//     $("body").css("background-image", "url(images/starwars2.jpg)");
-//     $("body").css("color", "black");
-//   } else {
-//     $("body").css("background-image", "url(images/stars.jpg)");
-//     $("body").css("color", "whitesmoke");
-//   }
-// }
+function changeBackground() {
+  if (gender === "male") {
+    $("body").css("background-image", "url(images/starwars.jpg)");
+    $("body").css("color", "whitesmoke");
+  } else if (gender === "female") {
+    $("body").css("background-image", "url(images/starwars2.jpg)");
+    $(".star-wars").css("color", "black");
+  } else {
+    $("body").css("background-image", "url(images/stars.jpg)");
+    $("body").css("color", "whitesmoke");
+  }
+}

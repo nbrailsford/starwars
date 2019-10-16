@@ -1,55 +1,56 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  color: #feda4a;
 }
 body {
   color: whitesmoke;
-  /* background-image: url("images/stars.jpg"); */
-  background-color: gray;
+  background-image: url("images/stars.jpg");
+  background-color: black;
   background-position: center;
   background-repeat: repeat-x;
   background-size: cover;
+  height: 100vh;
 }
 
 #startScreen,
 form,
-.submit {
+.submit,
+.star-wars {
   display: flex;
   justify-content: center;
 }
 
-#start,
-#name {
+#start {
   align-self: center;
 }
 #mainScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
 }
 
 main {
   width: 80%;
-  /* background-image: url("images/stars.jpg"); */
+  background-image: url("images/stars.jpg");
   background-size: cover;
-  background: gray;
+  background: transparent;
   margin: auto;
 }
-/* .star-wars {
-  display: flex;
-  justify-content: center;
+.star-wars {
   height: 800px;
   perspective: 400px;
   color: #feda4a;
   font-family: "Pathway Gothic One", sans-serif;
-  font-size: 500%;
+  font-size: 600%;
   font-weight: 600;
   letter-spacing: 6px;
   line-height: 150%;
   text-align: justify;
-} */
+}
 
-/* .crawl {
+.crawl {
   position: relative;
   top: -100px;
   transform-origin: 50% 100%;
@@ -64,7 +65,7 @@ main {
     top: -6000px;
     transform: rotateX(25deg) translateZ(-2500px);
   }
-} */
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -74,10 +75,13 @@ main {
   border-radius: 25px;
   margin: 100px auto;
   padding: 20px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
-
-/* .star-wars {
+.star-wars h1 {
+  font-size: 110%;
+  font-weight: 600;
+}
+.star-wars {
   height: 800px;
   perspective: 400px;
   font-family: "Pathway Gothic One", sans-serif;
@@ -86,7 +90,7 @@ main {
   letter-spacing: 6px;
   line-height: 150%;
   text-align: justify;
-} */
+}
 
 h1,
 h2 {
@@ -95,13 +99,16 @@ h2 {
   font-size: 40px;
 }
 
-p {
-  text-align: center;
-  font-size: 20px;
-  padding: 10px;
-}
 a {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  color: rgb(181, 22, 22);
+  font-size: 200%;
+  text-decoration: none;
+}
+a:hover {
+  color: #feda4a;
 }
 
 fieldset {
@@ -110,14 +117,69 @@ fieldset {
   height: 80px;
   padding: 10px;
 }
+.name {
+  position: relative;
+  align-self: center;
+  height: 30px;
+}
+input {
+  margin: 10px;
+  color: black;
+}
+label {
+  margin-top: 5px;
+}
 .submit {
   width: 100%;
 }
+#feet,
+#inches,
+option {
+  color: black;
+}
+
 .button {
+  position: relative;
+  align-self: center;
   height: 30px;
-  margin: 20px;
 }
 button {
   width: 100px;
-  margin: auto;
+  margin: 10px 45%;
+  height: 50px;
+  color: black;
+}
+
+@media only screen and (max-width: 895px) {
+  #startScreen,
+  form,
+  .submit,
+  .star-wars {
+    flex-direction: column;
+    align-items: center;
+  }
+  .container {
+    width: 95%;
+  }
+  input {
+    margin: 5px;
+  }
+  .button {
+    position: relative;
+    top: 25px;
+  }
+  button {
+    margin: 10px 40%;
+  }
+  fieldset {
+    height: 100px;
+  }
+  h1,
+  h2 {
+    margin: 0%;
+    font-size: 28px;
+  }
+  .star-wars {
+    font-size: 300%;
+  }
 }

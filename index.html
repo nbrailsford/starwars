@@ -29,19 +29,19 @@
       </h2>
       <form></form>
       <form id="js-form">
-        <label id="name" for="name">Name</label>
-        <input type="text" name="name" id="names" />
+        <label class="name" for="names">Name</label>
+        <input class="name" type="text" name="name" id="names" required />
         <fieldset>
-          How tall are You?
+          How tall are You? <br />
           <label for="feet">feet</label>
-          <select id="feetTall" for="feet">
+          <select id="feet" for="feet">
             <option value="5">1</option>
             <option value="5">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
           </select>
           <label for="inches">inches</label>
-          <select id="inchesTall" for="inches" size="1">
+          <select id="inches" for="inches" size="1">
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -57,15 +57,15 @@
           </select>
         </fieldset>
         <fieldset>
-          Choose your gender:
-          <label for="search-term">Male</label>
-          <input type="radio" name="search-term" id="male" />
+          Choose your gender: <br />
+          <label for="search-term" required>Male</label>
+          <input type="radio" name="search-term" id="male" required />
           <label for="search-term">Female</label>
           <input type="radio" name="search-term" id="female" />
           <label for="search-term">Other</label>
           <input type="radio" name="search-term" id="other" />
         </fieldset>
-        <input class="button" type="submit" />
+        <input class="button" type="submit" value="submit" />
       </form>
 
       <main></main>
