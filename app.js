@@ -70,6 +70,8 @@ function check() {
 
 //render results to the screen
 function renderResults(responseJson) {
+  $("#mainScreen").hide();
+
   getClosestHeight(responseJson);
   for (let i = 0; i < responseJson.results.length; i++)
     if (closest === responseJson.results[i].height) {
@@ -86,28 +88,31 @@ function renderResults(responseJson) {
               </div>
             </div>
             <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
-            <button id="re-start"onClick="document.location.reload(true)">refresh</button>
+            <button id="re-start"onClick="document.location.reload(false)">refresh</button>
           </section>      
         </div>`
       );
       break;
     } else {
       if (parseInt(closest) < 96) {
-        $("main").append(`<h1>No Matches! try another name</h1>`);
+        $("main").append(
+          `<h1>No Matches! try another name</h1><button id="re-start"onClick="document.location.reload(true)">refresh</button>`
+        );
         break;
       }
     }
 }
 
-// watch for summit
 let feet = 0.0;
 let inches = 0.0;
 let height = 0;
 let name = "";
 let nameVal = 0;
+// watch for summit
 function watchForm() {
   $("form").submit(event => {
     $("main").empty();
+    $("main").height("100vh");
     genderCheck();
     changeBackground();
     feet = $("#feetTall").val();
