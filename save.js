@@ -35,34 +35,32 @@ function genderCheck() {
     gender = "n/a";
   }
 }
+const url = "https://swapi.co/api/people/?page=";
 
+let num = "";
+console.log(url + num);
+function getNum() {
+  if (nameVal < 100) {
+    num = "1";
+  } else if (nameVal <= 105) {
+    num = "2";
+  } else if (nameVal <= 110) {
+    num = "3";
+  } else if (nameVal <= 115) {
+    num = "4";
+  } else if (nameVal <= 115) {
+    num = "5";
+  } else if (nameVal <= 120) {
+    num = "6";
+  } else {
+    num = "7";
+  }
+}
 // get api
 function getPeople() {
-  if (nameVal > 100) {
-    fetch("https://swapi.co/api/people/?page=1")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 105) {
-    fetch("https://swapi.co/api/people/?page=2")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 110) {
-    fetch("https://swapi.co/api/people/?page=3")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 115) {
-    fetch("https://swapi.co/api/people/?page=4")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 120) {
-    fetch("https://swapi.co/api/people/?page=5")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else {
-    fetch("https://swapi.co/api/people/?page=6")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  }
+  fetch(url + num)
+    .then(response => response.json())
+    .then(responseJson => renderResults(responseJson));
 }
 function check() {
   console.log(responseJson.results);
@@ -70,43 +68,57 @@ function check() {
 
 //render results to the screen
 function renderResults(responseJson) {
+  $("#mainScreen").hide();
+
   getClosestHeight(responseJson);
   for (let i = 0; i < responseJson.results.length; i++)
     if (closest === responseJson.results[i].height) {
       $("main").append(
         `<div class="container">
-          <section class="star-wars">
-            <div class="crawl">
-              <div class="text">
-                <h1> ${responseJson.results[i].name}:</h1>
-                <p>height: ${responseJson.results[i].height} </p>
-                <p>weight: ${responseJson.results[i].mass} </p>
+          <div class="contrast">
+            <section class="star-wars">
+              <div class="crawl">
+                <h1 class="title"> ${responseJson.results[i].name}:</h1>
+                <p>height: ${responseJson.results[i].height} cm </p>
+                <p>weight: ${responseJson.results[i].mass} kilos</p>
                 <p>${responseJson.results[i].skin_color} skin</p>
                 <p>${responseJson.results[i].eye_color} eyes</p>
                 <p>${responseJson.results[i].hair_color} hair</p>
-                <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
+                </div>
               </div>
-            </div>
-          </section>      
-        </div>`
+            </section> 
+           </div>      
+        </div>
+        <a id="info" target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">More Info</a>
+        <button id="re-start"onClick="document.location.reload(false)">Start Over</button>`
       );
+      console.log(
+        `//www.starwars.com/search?q=${responseJson.results[i].name}`
+      );
+      break;
     } else {
       if (parseInt(closest) < 96) {
-        $("main").append(`<h1>No Matches! </h1>`);
+        $("main").append(
+          `<h1>No Matches! try another name</h1><button id="re-start"onClick="document.location.reload(true)">refresh</button>`
+        );
         break;
       }
     }
+  $("#info").hide();
+  setTimeout(buttonTimer, 20000);
 }
 
-// watch for summit
 let feet = 0.0;
 let inches = 0.0;
 let height = 0;
 let name = "";
 let nameVal = 0;
+// watch for summit
 function watchForm() {
   $("form").submit(event => {
+    event.preventDefault();
     $("main").empty();
+    $("main").height("100vh");
     genderCheck();
     changeBackground();
     feet = $("#feetTall").val();
@@ -116,7 +128,7 @@ function watchForm() {
       .val()
       .toLowerCase();
     nameVal = name.charCodeAt(0);
-    event.preventDefault();
+    getNum();
     getPeople();
   });
 }
@@ -142,33 +154,16 @@ function changeBackground() {
     $("body").css("color", "whitesmoke");
   } else if (gender === "female") {
     $("body").css("background-image", "url(images/starwars2.jpg)");
-    $("body").css("color", "black");
+    $(".star-wars").css("color", "black");
   } else {
     $("body").css("background-image", "url(images/stars.jpg)");
     $("body").css("color", "whitesmoke");
   }
 }
 
-<section class="star-wars">
-  <div class="crawl">
-    <div class="title">
-      <p>Episode IV</p>
-      <h1>A New Hope</h1>
-    </div>
+let na = "Abba";
+console.log(na.charCodeAt(0));
 
-    <p>
-      It is a period of civil war. Rebel spaceships, striking from a hidden
-      base, have won their first victory against the evil Galactic Empire.
-    </p>
-    <p>
-      During the battle, Rebel spies managed to steal secret plans to the
-      Empire’s ultimate weapon, the DEATH STAR, an armored space station with
-      enough power to destroy an entire planet.
-    </p>
-    <p>
-      Pursued by the Empire’s sinister agents, Princess Leia races home aboard
-      her starship, custodian of the stolen plans that can save her people and
-      restore freedom to the galaxy…
-    </p>
-  </div>
-</section>;
+function buttonTimer() {
+  $("#info").show();
+}

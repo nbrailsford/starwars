@@ -23,6 +23,10 @@ form,
 
 #start {
   align-self: center;
+  cursor: pointer;
+}
+#re-start {
+  cursor: pointer;
 }
 #mainScreen {
   display: flex;
@@ -53,7 +57,7 @@ main {
 
 .crawl {
   position: relative;
-  top: -100px;
+  top: -1000px;
   transform-origin: 50% 100%;
   animation: crawl 100s linear;
 }
@@ -80,6 +84,16 @@ main {
   padding: 20px;
   overflow: hidden;
 }
+.contrast {
+  position: relative;
+  top: -20px;
+  left: -120px;
+  background: rgba(0, 0, 0, 0.7);
+  height: 125%;
+  width: 140%;
+  margin: 0;
+  padding: 0;
+}
 .star-wars h1 {
   font-size: 110%;
   font-weight: 600;
@@ -102,20 +116,6 @@ h2 {
   font-size: 40px;
 }
 
-a {
-  position: relative;
-  top: 15px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  color: rgb(181, 22, 22);
-  font-size: 200%;
-  text-decoration: none;
-}
-a:hover {
-  color: #feda4a;
-}
-
 fieldset {
   margin: 5px;
   width: 45%;
@@ -126,6 +126,8 @@ fieldset {
   position: relative;
   align-self: center;
   height: 30px;
+  width: 80px;
+  font-size: 20px;
 }
 input {
   margin: 10px;
@@ -147,21 +149,45 @@ option {
   position: relative;
   align-self: center;
   height: 40px;
-  width: 100px;
+  width: 175px;
+  font-size: 20px;
   background-color: rgb(181, 22, 22);
+  cursor: pointer;
 }
-button {
-  position: relative;
-  top: 15px;
+button,
+#info {
   width: 100px;
-  margin: 10px 45%;
+  margin: 10px 40%;
   height: 50px;
   color: black;
   background-color: rgb(181, 22, 22);
 }
+#info {
+  position: relative;
+  top: -215px;
+}
+
+a {
+  text-align: center;
+  background-color: rgb(181, 22, 22);
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 button:hover,
-.button:hover {
+.button:hover,
+a:hover {
   background-color: #f7d84a;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+  top: -200px;
 }
 
 @media only screen and (max-width: 895px) {
@@ -184,7 +210,9 @@ button:hover,
   }
   button {
     margin: 10px 40%;
+    cursor: pointer;
   }
+
   fieldset {
     height: 100px;
   }
@@ -195,5 +223,18 @@ button:hover,
   }
   .star-wars {
     font-size: 300%;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .contrast {
+    left: -80px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .contrast {
+    left: -40px;
+  }
+  #info {
+    margin: 5px 34%;
   }
 }
