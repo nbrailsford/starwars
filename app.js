@@ -8,10 +8,7 @@ function emptyCounts() {
 }
 
 // if gender matches then push closest height to an array
-
 function getClosestHeight(responseJson) {
-  console.log(responseJson.results);
-  console.log(gender);
   emptyCounts();
   for (let i = 0; i < 9; i++) {
     if (responseJson.results[i].gender === gender) {
@@ -21,8 +18,6 @@ function getClosestHeight(responseJson) {
       });
     }
   }
-  console.log(counts);
-  console.log(closest);
 }
 
 // assign gender
@@ -35,34 +30,45 @@ function genderCheck() {
     gender = "n/a";
   }
 }
+//change background based on gender input
+function changeBackground() {
+  if (gender === "male") {
+    $("body").css("background-image", "url(images/starwars.jpg)");
+    $("body").css("color", "whitesmoke");
+  } else if (gender === "female") {
+    $("body").css("background-image", "url(images/starwars2.jpg)");
+    $(".star-wars").css("color", "black");
+  } else {
+    $("body").css("background-image", "url(images/stars.jpg)");
+    $("body").css("color", "whitesmoke");
+  }
+}
 
+let num = "";
+function getNum() {
+  if (nameVal < 100) {
+    num = "1";
+  } else if (nameVal <= 105) {
+    num = "2";
+  } else if (nameVal <= 110) {
+    num = "3";
+  } else if (nameVal <= 115) {
+    num = "4";
+  } else if (nameVal <= 115) {
+    num = "5";
+  } else if (nameVal <= 120) {
+    num = "6";
+  } else {
+    num = "7";
+  }
+}
+
+const url = "https://swapi.co/api/people/?page=";
 // get api
 function getPeople() {
-  if (nameVal > 100) {
-    fetch("https://swapi.co/api/people/?page=1")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 105) {
-    fetch("https://swapi.co/api/people/?page=2")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 110) {
-    fetch("https://swapi.co/api/people/?page=3")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 115) {
-    fetch("https://swapi.co/api/people/?page=4")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else if (nameVal >= 120) {
-    fetch("https://swapi.co/api/people/?page=5")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  } else {
-    fetch("https://swapi.co/api/people/?page=6")
-      .then(response => response.json())
-      .then(responseJson => renderResults(responseJson));
-  }
+  fetch(url + num)
+    .then(response => response.json())
+    .then(responseJson => renderResults(responseJson));
 }
 function check() {
   console.log(responseJson.results);
@@ -77,20 +83,22 @@ function renderResults(responseJson) {
     if (closest === responseJson.results[i].height) {
       $("main").append(
         `<div class="container">
-        <section class="star-wars">
-          <div class="crawl">
-            <h1 class="title"> ${responseJson.results[i].name}:</h1>
-              <p>height: ${responseJson.results[i].height} cm </p>
-              <p>weight: ${responseJson.results[i].mass} kilos</p>
-              <p>${responseJson.results[i].skin_color} skin</p>
-              <p>${responseJson.results[i].eye_color} eyes</p>
-              <p>${responseJson.results[i].hair_color} hair</p>
+          <div class="contrast">
+            <section class="star-wars">
+              <div class="crawl">
+                <h1 class="title"> ${responseJson.results[i].name}:</h1>
+                <p>height: ${responseJson.results[i].height} cm </p>
+                <p>weight: ${responseJson.results[i].mass} kilos</p>
+                <p>${responseJson.results[i].skin_color} skin</p>
+                <p>${responseJson.results[i].eye_color} eyes</p>
+                <p>${responseJson.results[i].hair_color} hair</p>
+                </div>
               </div>
-            </div>
-            <a target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">find out more about your character here</a>
-            <button id="re-start"onClick="document.location.reload(false)">refresh</button>
-          </section>      
-        </div>`
+            </section> 
+           </div>      
+        </div>
+        <a id="info" target="blank" href="http://www.starwars.com/search?q=${responseJson.results[i].name}">More Info</a>
+        <button id="re-start"onClick="document.location.reload(false)">Start Over</button>`
       );
       break;
     } else {
@@ -101,28 +109,28 @@ function renderResults(responseJson) {
         break;
       }
     }
+  $("#info").hide();
+  setTimeout(buttonTimer, 20000);
 }
 
-let feet = 0.0;
-let inches = 0.0;
-let height = 0;
-let name = "";
-let nameVal = 0;
+let feet, inches, height, name, nameVal;
+
 // watch for summit
 function watchForm() {
   $("form").submit(event => {
+    event.preventDefault();
     $("main").empty();
     $("main").height("100vh");
-    genderCheck();
-    changeBackground();
-    feet = $("#feetTall").val();
-    inches = $("#inchesTall").val() / 10;
+    feet = $("#feet").val();
+    inches = $("#inches").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
     name = $("#names")
       .val()
       .toLowerCase();
     nameVal = name.charCodeAt(0);
-    event.preventDefault();
+    genderCheck();
+    changeBackground();
+    getNum();
     getPeople();
   });
 }
@@ -142,15 +150,6 @@ $(function() {
   start();
 });
 
-function changeBackground() {
-  if (gender === "male") {
-    $("body").css("background-image", "url(images/starwars.jpg)");
-    $("body").css("color", "whitesmoke");
-  } else if (gender === "female") {
-    $("body").css("background-image", "url(images/starwars2.jpg)");
-    $(".star-wars").css("color", "black");
-  } else {
-    $("body").css("background-image", "url(images/stars.jpg)");
-    $("body").css("color", "whitesmoke");
-  }
+function buttonTimer() {
+  $("#info").show();
 }
