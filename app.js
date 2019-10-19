@@ -110,7 +110,7 @@ function renderResults(responseJson) {
       }
     }
   $("#info").hide();
-  setTimeout(buttonTimer, 20000);
+  setTimeout(buttonTimer, 15000);
 }
 
 let feet, inches, height, name, nameVal;

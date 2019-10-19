@@ -12,6 +12,11 @@ body {
   background-size: cover;
 }
 
+.radio {
+  display: flex;
+  justify-content: space-between;
+}
+
 #startScreen,
 form,
 .submit,
@@ -158,8 +163,8 @@ button,
   width: 100px;
   margin: 10px 40%;
   height: 50px;
-  color: black;
-  background-color: rgb(181, 22, 22);
+  color: white;
+  background-color: rgba(181, 22, 22, 0.7);
 }
 #info {
   position: relative;
