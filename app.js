@@ -146,7 +146,6 @@ function start() {
 
 $(function() {
   $("#mainScreen").hide();
-  console.log("App loaded! Waiting for submit!");
   start();
 });
 

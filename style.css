@@ -10,6 +10,7 @@ body {
   background-position: center;
   background-repeat: repeat-x;
   background-size: cover;
+  height: 100vh;
 }
 
 .radio {
@@ -81,7 +82,7 @@ main {
   display: flex;
   flex-direction: column;
   border: 20px solid rgb(181, 22, 22);
-  width: 104%;
+  width: 90%;
   height: 50%;
   border-radius: 25px;
   margin: 100px auto;
@@ -203,7 +204,8 @@ footer {
     align-items: center;
   }
   .container {
-    width: 95%;
+    width: 90%;
+    height: 60vh;
   }
   input {
     margin: 5px;
@@ -213,7 +215,7 @@ footer {
     top: 25px;
   }
   button {
-    margin: 10px 40%;
+    margin: 50px 40%;
     cursor: pointer;
   }
 
