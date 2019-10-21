@@ -21,56 +21,61 @@
           characteristics with a database of Star Wars characters.
         </h2>
 
-        <button id="start">START</button>
+        <button id="start" role="button">START</button>
       </div>
     </section>
 
     <section id="mainScreen">
       <h1>Is The Force With You?</h1>
-      <h2>Input your name, height and gender</h2>
+      <h2>
+        Input your <span>name</span>, <span>height</span> and
+        <span>gender</span>
+      </h2>
       <h2>
         to find your match
       </h2>
       <form id="js-form">
-        <label class="name" for="names">Name</label>
-        <input class="name" type="text" name="name" id="names" required />
-        <fieldset>
-          How tall are You? <br />
-          <label for="feet">feet</label>
-          <select id="feet">
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-          <label for="inches">inches</label>
-          <select id="inches" size="1">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-          </select>
-        </fieldset>
-        <fieldset class="radio">
-          Choose your gender: <br />
-          <label for="male">Male</label>
-          <input type="radio" name="search-term" id="male" required />
-          <label for="female">Female</label>
-          <input type="radio" name="search-term" id="female" />
-          <label for="other">Other</label>
-          <input type="radio" name="search-term" id="other" />
-        </fieldset>
-        <input class="button" type="submit" value="submit" />
+        <label class="names" for="name"></label>
+        <input type="text" id="name" placeholder="Name" required />
+        <div class="inputs">
+          <fieldset>
+            How tall are You? <br />
+            <label for="feet">feet</label>
+            <select id="feet">
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <label for="inches">inches</label>
+            <select id="inches" size="1">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+          </fieldset>
+          <fieldset class="radio">
+            Choose your gender: <br />
+            <label for="male">Male</label>
+            <input type="radio" name="search-term" id="male" required />
+            <label for="female">Female</label>
+            <input type="radio" name="search-term" id="female" />
+            <label for="other">Other</label>
+            <input type="radio" name="search-term" id="other" />
+          </fieldset>
+        </div>
+        <input class="button" role="button" type="submit" value="submit" />
       </form>
     </section>
-    <main></main>
+    <main aria-live="polite"></main>
     <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

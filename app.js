@@ -1,7 +1,6 @@
 "use strict";
 let counts = [];
 let closest = 0;
-let gender = "";
 
 function emptyCounts() {
   counts = [];
@@ -9,7 +8,8 @@ function emptyCounts() {
 
 // if gender matches then push closest height to an array
 function getClosestHeight(responseJson) {
-  emptyCounts();
+  let counts = [];
+  let gender = genderCheck();
   for (let i = 0; i < 9; i++) {
     if (responseJson.results[i].gender === gender) {
       counts.push(responseJson.results[i].height);
@@ -22,6 +22,7 @@ function getClosestHeight(responseJson) {
 
 // assign gender
 function genderCheck() {
+  let gender = "";
   if (document.getElementById("male").checked === true) {
     gender = "male";
   } else if (document.getElementById("female").checked === true) {
@@ -29,9 +30,11 @@ function genderCheck() {
   } else if (document.getElementById("other").checked === true) {
     gender = "n/a";
   }
+  return gender;
 }
 //change background based on gender input
 function changeBackground() {
+  let gender = genderCheck();
   if (gender === "male") {
     $("body").css("background-image", "url(images/starwars.jpg)");
     $("body").css("color", "whitesmoke");
@@ -44,8 +47,8 @@ function changeBackground() {
   }
 }
 
-let num = "";
 function getNum() {
+  let num = "";
   if (nameVal < 100) {
     num = "1";
   } else if (nameVal <= 105) {
@@ -61,17 +64,16 @@ function getNum() {
   } else {
     num = "7";
   }
+  return num;
 }
 
-const url = "https://swapi.co/api/people/?page=";
 // get api
 function getPeople() {
-  fetch(url + num)
+  const url = "https://swapi.co/api/people/?page=";
+  const pageNum = getNum();
+  fetch(url + pageNum)
     .then(response => response.json())
     .then(responseJson => renderResults(responseJson));
-}
-function check() {
-  console.log(responseJson.results);
 }
 
 //render results to the screen
@@ -91,7 +93,7 @@ function renderResults(responseJson) {
                 <p>weight: ${responseJson.results[i].mass} kilos</p>
                 <p>${responseJson.results[i].skin_color} skin</p>
                 <p>${responseJson.results[i].eye_color} eyes</p>
-                <p>${responseJson.results[i].hair_color} hair</p>
+                <p>hair: ${responseJson.results[i].hair_color}...</p>
                 </div>
               </div>
             </section> 
@@ -113,7 +115,7 @@ function renderResults(responseJson) {
   setTimeout(buttonTimer, 15000);
 }
 
-let feet, inches, height, name, nameVal;
+let height, nameVal;
 
 // watch for summit
 function watchForm() {
@@ -121,16 +123,15 @@ function watchForm() {
     event.preventDefault();
     $("main").empty();
     $("main").height("100vh");
-    feet = $("#feet").val();
-    inches = $("#inches").val() / 10;
+    let feet = $("#feet").val();
+    let inches = $("#inches").val() / 10;
     height = Math.round(((feet / 1 + inches) * 12) / 0.394);
-    name = $("#names")
+    let name = $("#name")
       .val()
       .toLowerCase();
     nameVal = name.charCodeAt(0);
     genderCheck();
     changeBackground();
-    getNum();
     getPeople();
   });
 }
@@ -149,6 +150,7 @@ $(function() {
   start();
 });
 
+// delay 'more info' button until after scroll
 function buttonTimer() {
   $("#info").show();
 }
