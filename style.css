@@ -105,10 +105,11 @@ h2 {
 fieldset {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 20px;
   margin: 5px;
   width: 50%;
-  height: 100px;
+  min-height: 100px;
   padding: 10px;
 }
 .radio {
@@ -217,7 +218,7 @@ a:hover,
   }
 
   fieldset {
-    height: 100px;
+    min-height: 100px;
     width: 70%;
   }
   h1 {
